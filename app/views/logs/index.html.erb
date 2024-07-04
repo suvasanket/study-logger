@@ -1,0 +1,29 @@
+<% content_for :subtitle do %>
+  <%= DateTime.now.to_fs(:my_format) %>
+<% end %>
+
+<p style="color: green"><%= notice %></p>
+
+<div class="columns is-centered mt-6">
+  <% @logs.each do |log| %>
+    <div class="column is-one-quarter">
+      <div class="card">
+        <a href="<%= log_path(log) %>">
+          <div class="card-content">
+            <p class="title is-3"><%= log.what %></p>
+            <p class="subtitle is-7 mt-3">
+              <span>for <%= log.time %> hrs</span>
+            </p>
+          </div>
+        </a>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div id="logs">
+</div>
+
+<div class="columns is-centered mt-6">
+  <%= link_to "New log", new_log_path, class: "button" %>
+</div>

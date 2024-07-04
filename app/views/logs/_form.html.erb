@@ -1,0 +1,34 @@
+<%= form_with(model: log) do |form| %>
+  <% if log.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(log.errors.count, "error") %> prohibited this log from being saved:</h2>
+
+      <ul>
+        <% log.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="columns is-centered mt-6">
+    <div class="column is-4">
+      <div class="card">
+        <div class="card-content">
+          <div class="field">
+            <%= form.text_field :what, class: "input is-large is-static", placeholder: "what?" %>
+          </div>
+          <div class="field">
+            <%= form.number_field :time, class: "input is-small is-static", placeholder: "time" %>
+          </div>
+          <div class="field">
+              <%= form.text_field :something, class: "textarea is-primary", placeholder: "write something about your session" %>
+          </div>
+          <div class="action">
+              <%= form.submit class: "button is-success is-inverted" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
